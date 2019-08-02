@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.hustcanteen.MainActivity">
+
+
+
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </androidx.viewpager.widget.ViewPager>
+
+
+    <ImageView
+        android:id="@+id/main_tab_line"
+        android:layout_width="20dp"
+        android:layout_height="2dp"
+        android:src="@color/orange"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:padding="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/ll1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:id="@+id/image1"
+                android:src="@drawable/fragment1on"/>
+            <TextView
+                android:id="@+id/page_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发现"
+                android:textSize="13sp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ll2"
+            android:padding="3dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:id="@+id/image2"
+                android:src="@drawable/fragment2off"/>
+            <TextView
+                android:id="@+id/page_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="附近"
+                android:textSize="13sp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ll3"
+            android:padding="3dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="23dp"
+                android:id="@+id/image3"
+                android:layout_height="23dp"
+                android:src="@drawable/fragment3off"/>
+            <TextView
+                android:id="@+id/page_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                android:textSize="13sp"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

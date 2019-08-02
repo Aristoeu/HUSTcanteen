@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dinning">
+        <item>东教工</item>
+        <item>韵苑食堂</item>
+        <item>东一食堂</item>
+        <item>东三</item>
+        <item>学一</item>
+        <item>学二</item>
+        <item>东篱食堂</item>
+        <item>紫荆园</item>
+        <item>集锦园</item>
+        <item>喻园</item>
+        <item>集贤楼</item>
+        <item>百惠园</item>
+        <item>枫林湾</item>
+        <item>西华园</item>
+        <item>西一</item>
+        <item>西二</item>
+        <item>氧气层</item>
+        <item>百景园</item>
+    </string-array>
+</resources>
