@@ -1,44 +1,36 @@
-package com.example.hustcanteen.fragment;
+package com.example.hustcanteen.location;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.example.hustcanteen.BottomDrawerLayout;
-import com.example.hustcanteen.DinningHallAdapter;
-import com.example.hustcanteen.Hall;
+import com.example.hustcanteen.fragment.BaseFragment;
+import com.example.hustcanteen.location.DinningHallAdapter;
 import com.example.hustcanteen.R;
 import com.example.hustcanteen.location.LocationData;
+import com.example.hustcanteen.location.LocationModel;
+import com.example.hustcanteen.location.LocationView;
+import com.example.hustcanteen.location.MyLocationListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.hustcanteen.location.LocationData.ChosenHallList;
 import static com.example.hustcanteen.location.LocationData.HallList;
@@ -46,30 +38,64 @@ import static com.example.hustcanteen.location.LocationData.hallName;
 import static com.example.hustcanteen.location.LocationData.locationString;
 import static com.example.hustcanteen.location.LocationData.locationX;
 import static com.example.hustcanteen.location.LocationData.locationY;
-import static com.example.hustcanteen.location.LocationData.picitures;
 
-public class Fragment2 extends BaseFragment {
-    private MapView mMapView = null;
-    private BaiduMap mBaiduMap;
+public class LocationFragment extends BaseFragment implements LocationModel, LocationView {
+    public static MapView mMapView = null;
+    public static BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
-    private Spinner spinner;
     private ListView listView;
-    private Boolean isFirstLocate = true;
+    public static Boolean isFirstLocate = true;
     private EditText editText;
-    private ImageView search;
-    private BottomDrawerLayout bottomDrawerLayout;
     private DinningHallAdapter adapterTotal;
     @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragment2, null);
         mMapView = view.findViewById(R.id.bmapView);
-        spinner = view.findViewById(R.id.spinner);
+        Spinner spinner = view.findViewById(R.id.spinner);
         listView = view.findViewById(R.id.listview);
         editText = view.findViewById(R.id.edit_text);
-        search = view.findViewById(R.id.search);
-        bottomDrawerLayout = view.findViewById(R.id.bottom_drawer_layout);
+        ImageView search = view.findViewById(R.id.search);
+        ImageView down = view.findViewById(R.id.down);
         adapterTotal = new DinningHallAdapter(LocationData.HallList,getContext());
         listView.setAdapter(adapterTotal);
+        initMap();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                UpdatePosition(position);
+                listView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(ChosenHallList.isEmpty())
+                UpdatePosition(i);
+                else UpdatePosition(ChosenHallList.get(i).index);
+                listView.setVisibility(View.INVISIBLE);
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchForHalls();
+            }
+        });
+        down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listView.setVisibility(View.INVISIBLE);
+            }
+        });
+        return view;
+    }
+    @Override
+    public void initMap() {
         mBaiduMap = mMapView.getMap();
 //普通地图 ,mBaiduMap是地图控制器对象
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
@@ -102,58 +128,36 @@ public class Fragment2 extends BaseFragment {
                 .icon(bitmap);
 //在地图上添加Marker，并显示
         mBaiduMap.addOverlay(option1);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                UpdatePosition(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                bottomDrawerLayout.minimize();
-                if(ChosenHallList.isEmpty())
-                UpdatePosition(i);
-                else UpdatePosition(ChosenHallList.get(i).index);
-            }
-        });
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean Found = false;
-                String s = editText.getText().toString();
-                ChosenHallList = new ArrayList<>();
-                if (s.equals("")) {
-                    Toast.makeText(getContext(), "请在输入框里输入内容哦", Toast.LENGTH_SHORT).show();
-                    listView.setAdapter(adapterTotal);
-                }
-                else {
-                    for (int i = 0; i < locationString.length; i++) {
-                        if (hallName[i].contains(s)) {
-                            ChosenHallList.add(HallList.get(i));
-                            Found = true;
-                        }
-                    }
-                if (Found) {
-                        DinningHallAdapter adapter = new DinningHallAdapter(ChosenHallList, getContext());
-                        listView.setAdapter(adapter);
-                    } else {
-                    Toast.makeText(getContext(), "没找到哦，换个词试试", Toast.LENGTH_SHORT).show();
-                    //ChosenHallList = new ArrayList<>();
-                    listView.setAdapter(adapterTotal);
-                }
-                }
-            }
-        });
-        return view;
     }
-
-    private void UpdatePosition(int position) {
+    @Override
+    public void searchForHalls() {
+        boolean Found = false;
+        String s = editText.getText().toString();
+        ChosenHallList = new ArrayList<>();
+        listView.setVisibility(View.VISIBLE);
+        if (s.equals("")) {
+            Toast.makeText(getContext(), "请在输入框里输入内容哦", Toast.LENGTH_SHORT).show();
+            listView.setAdapter(adapterTotal);
+        }
+        else {
+            for (int i = 0; i < locationString.length; i++) {
+                if (hallName[i].contains(s)) {
+                    ChosenHallList.add(HallList.get(i));
+                    Found = true;
+                }
+            }
+        if (Found) {
+                DinningHallAdapter adapter = new DinningHallAdapter(ChosenHallList, getContext());
+                listView.setAdapter(adapter);
+            } else {
+            Toast.makeText(getContext(), "没找到哦，换个词试试", Toast.LENGTH_SHORT).show();
+            //ChosenHallList = new ArrayList<>();
+            listView.setAdapter(adapterTotal);
+        }
+        }
+    }
+    @Override
+    public void UpdatePosition(int position) {
         LatLng pointNew = new LatLng(locationX[position],locationY[position]);
         BitmapDescriptor bitmap = BitmapDescriptorFactory
                 .fromResource(R.drawable.location);
@@ -171,34 +175,10 @@ public class Fragment2 extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
-
     }
     /**
      * 实现定位回调
      */
-    public class MyLocationListener extends BDAbstractLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            //mapView 销毁后不在处理新接收的位置
-            if (location == null || mMapView == null){
-                return;
-            }
-            MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                    // 此处设置开发者获取到的方向信息，顺时针0-360
-                    .direction(location.getDirection()).latitude(location.getLatitude())
-                    .longitude(location.getLongitude()).build();
-            mBaiduMap.setMyLocationData(locData);
-            if (isFirstLocate) {
-                LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
-                MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
-                mBaiduMap.animateMapStatus(update);
-                update = MapStatusUpdateFactory.zoomTo(19f);
-                mBaiduMap.animateMapStatus(update);
-                isFirstLocate = false;
-            }
-        }
-    }
 
     @Override
     public void onResume() {

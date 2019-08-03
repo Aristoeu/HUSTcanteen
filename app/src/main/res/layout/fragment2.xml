@@ -59,130 +59,50 @@
         android:clickable="true" />
 
 </LinearLayout>
-<com.example.hustcanteen.BottomDrawerLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    android:id="@+id/bottom_drawer_layout"
-    android:layout_alignParentBottom="true">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:id="@+id/white_layout">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:scaleType="fitXY"
-            android:src="#fff"/>
-    </RelativeLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/layout_price_detail">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/rectangle_big"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="70dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="60dp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/rectangle_3search_top"
-            android:layout_gravity="center_horizontal"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="top">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:layout_margin="15dp"
-                android:src="@drawable/rectangle3_search"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:id="@+id/search"
-                    android:src="@drawable/search_3"/>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:id="@+id/edit_text"
-                    android:hint="向上拖动搜索食堂名称"
-                    android:background="@null"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/listview">
-        </ListView>
-    </LinearLayout>
-</RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:id="@+id/layout_bottom_bar">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/rectangle_background_33"/>
+            android:layout_margin="15dp"
+            android:src="@drawable/rectangle3_search"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
             <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/down"
+                android:src="@drawable/down"/>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:id="@+id/search"
+                android:src="@drawable/search_3"/>
+            <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/rectangle_3search_top"
-                android:layout_gravity="center_horizontal"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:layout_margin="15dp"
-                    android:src="@drawable/rectangle3_search"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        android:id="@+id/img_spread_out"
-                        android:src="@drawable/search_3"/>
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" 
-                        android:gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:hint="向上拖动搜索食堂名称"
-                        android:background="@null"/>
-                </LinearLayout>
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:id="@+id/edit_text"
+                android:hint="在这里搜索食堂名称"
+                android:background="@null"/>
         </LinearLayout>
     </RelativeLayout>
-</com.example.hustcanteen.BottomDrawerLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="130dp"
+        android:visibility="invisible"
+        android:id="@+id/listview">
+    </ListView>
 </RelativeLayout>

@@ -1,24 +1,27 @@
 package com.example.hustcanteen.fragment;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.hustcanteen.R;
+import com.example.hustcanteen.TryNew.TryNewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment1 extends BaseFragment {
+public class FragmentFind extends BaseFragment {
     private ViewPager viewPager1,viewPager2;
     private List<View> viewList,viewList2;//view数组
     private ImageView image1,image2,image3,image4,image5,image6;
+    private TextView tryNew;
     @Override
     public View initView() {
         final View view = View.inflate(mContext, R.layout.fragment1, null);
@@ -30,6 +33,7 @@ public class Fragment1 extends BaseFragment {
         image4 = view.findViewById(R.id.image4);
         image5 = view.findViewById(R.id.image5);
         image6 = view.findViewById(R.id.image6);
+        tryNew = view.findViewById(R.id.try_new);
         LayoutInflater inflater = getLayoutInflater();
         View view1 = inflater.inflate(R.layout.recommend1,null);
         View view2 = inflater.inflate(R.layout.recommend2,null);
@@ -113,6 +117,12 @@ public class Fragment1 extends BaseFragment {
         };
         viewPager1.setAdapter(pagerAdapter);
         viewPager2.setAdapter(pagerAdapter2);
+        tryNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), TryNewActivity.class));
+            }
+        });
         setListener();
         return view;
     }

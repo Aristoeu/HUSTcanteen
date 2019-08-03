@@ -1,4 +1,4 @@
-package com.example.hustcanteen;
+package com.example.hustcanteen.location;
 
 import android.app.Application;
 

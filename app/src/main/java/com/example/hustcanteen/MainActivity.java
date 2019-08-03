@@ -3,7 +3,6 @@ package com.example.hustcanteen;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,9 +14,11 @@ import android.widget.TextView;
 
 import com.example.hustcanteen.adapter.PagerSlideAdapter;
 import com.example.hustcanteen.fragment.BaseFragment;
-import com.example.hustcanteen.fragment.Fragment1;
-import com.example.hustcanteen.fragment.Fragment2;
-import com.example.hustcanteen.fragment.Fragment3;
+import com.example.hustcanteen.fragment.FragmentFind;
+import com.example.hustcanteen.location.LocationFragment;
+import com.example.hustcanteen.fragment.FragmentMine;
+import com.example.hustcanteen.utils.Dish;
+import com.example.hustcanteen.utils.Hall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ import static com.example.hustcanteen.location.LocationData.locationString;
 import static com.example.hustcanteen.location.LocationData.locationX;
 import static com.example.hustcanteen.location.LocationData.locationY;
 import static com.example.hustcanteen.location.LocationData.picitures;
+import static com.example.hustcanteen.recommendation.RecommendationData.DishList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -67,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall0));
         picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall1));
         picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall2));
+        picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall3));
+        picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall4));
+        picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hal5));
         for (int i = 0;i<locationString.length;i++){
             Hall hall = new Hall();
             hall.address = locationString[i];
@@ -76,10 +81,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             hall.picture = picitures.get(i);
             hall.index = i;
             HallList.add(hall);
+            Dish dish = new Dish();
+            dish.score = i%5;
+            dish.hall = hallName[i];
+            dish.picture = picitures.get(i);
+            dish.name = hallName[i+1];
+            DishList.add(dish);
         }
-        mFragmentList.add(new Fragment1());
-        mFragmentList.add(new Fragment2());
-        mFragmentList.add(new Fragment3());
+
+        //temporary
+        mFragmentList.add(new FragmentFind());
+        mFragmentList.add(new LocationFragment());
+        mFragmentList.add(new FragmentMine());
         adapter = new PagerSlideAdapter(getSupportFragmentManager(), mFragmentList);
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(0);

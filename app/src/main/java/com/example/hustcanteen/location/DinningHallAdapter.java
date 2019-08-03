@@ -1,4 +1,4 @@
-package com.example.hustcanteen;
+package com.example.hustcanteen.location;
 
 import android.content.Context;
 import android.view.View;
@@ -8,12 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hustcanteen.R;
+import com.example.hustcanteen.utils.Hall;
 
 import java.util.List;
-
-import static com.example.hustcanteen.location.LocationData.hallName;
-import static com.example.hustcanteen.location.LocationData.locationString;
-import static com.example.hustcanteen.location.LocationData.picitures;
 
 public class DinningHallAdapter extends BaseAdapter {
     private Context context;

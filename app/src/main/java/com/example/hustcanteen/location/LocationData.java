@@ -2,7 +2,7 @@ package com.example.hustcanteen.location;
 
 import android.graphics.Bitmap;
 
-import com.example.hustcanteen.Hall;
+import com.example.hustcanteen.utils.Hall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,11 @@ public class LocationData {
             ,114.4121927375,114.4118762368,114.4114368415,114.4147429166};
     public static String[] hallName = {"东教工123","韵苑食堂222","东一食堂333","东三","学一","学二","东篱食堂","紫荆园","集锦园","喻园","集贤楼",
             "百惠园","枫林湾","西华园","西一","西二","氧气层","百景园"};
-    public static String[] locationString = {"华中科技大学东校区-教工食堂","华中科技大学东校区-韵苑学生食堂","湖北省武汉市洪山区东三路"};
+    public static String[] locationString = {"华中科技大学东校区-教工食堂","华中科技大学东校区-韵苑学生食堂","湖北省武汉市洪山区东三路",
+            "湖北省武汉市洪山区关山街道剑桥春天社区东北方向","湖北省武汉市洪山区关山街道关山口社区东北方向","华中科技大学(东校区) 约87米"};
     public static List<String> halls = new ArrayList<>();
     public static List<Bitmap> picitures = new ArrayList<>();
     public static List<Hall> HallList = new ArrayList<>();
     public static List<Hall> ChosenHallList = new ArrayList<>();
+
 }
