@@ -1,34 +1,44 @@
 package com.example.hustcanteen.recommendation;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hustcanteen.DetailActivity;
 import com.example.hustcanteen.R;
 import com.example.hustcanteen.utils.Dish;
-import com.example.hustcanteen.utils.Hall;
+import static com.example.hustcanteen.DetailData.dishDetail;
 
 import java.util.List;
 
 public class RecommendationGridAdapter extends RecyclerView.Adapter<RecommendationGridAdapter.ViewHolder> {
     private List<Dish> list;
+    private Context context;
     static class ViewHolder extends RecyclerView.ViewHolder{
         private transient ImageView imageView;
-        private transient TextView title,star,hall;
+        private transient TextView title,hall;
+        private transient ProgressBar star;
+        private transient LinearLayout layout;
         public ViewHolder(View view){
             super(view);
             imageView =view.findViewById(R.id.picture);
             title = view.findViewById(R.id.title);
-            star = view.findViewById(R.id.score);
+            star = view.findViewById(R.id.scores);
             hall = view.findViewById(R.id.hall);
+            layout = view.findViewById(R.id.big_layout);
         }
     }
-    public RecommendationGridAdapter(List<Dish> list){
+    public RecommendationGridAdapter(List<Dish> list,Context context){
         this.list = list;
+        this.context = context;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,19 +48,18 @@ public class RecommendationGridAdapter extends RecyclerView.Adapter<Recommendati
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Dish dish = list.get(position);
+        final Dish dish = list.get(position);
         holder.imageView.setImageBitmap(list.get(position).picture);
         holder.title.setText(list.get(position).name);
         holder.hall.setText(list.get(position).hall);
-        String stars = "";
-        switch (list.get(position).score){
-            case 0:stars = "★★★★★";break;
-            case 1:stars = "★☆☆☆☆";break;
-            case 2:stars = "★★☆☆☆";break;
-            case 3:stars = "★★★☆☆";break;
-            case 4:stars = "★★★★☆";break;
-        }
-        holder.star.setText(stars);
+        holder.star.setProgress(list.get(position).score);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dishDetail = dish;
+                context.startActivity(new Intent(context, DetailActivity.class));
+            }
+        });
     }
     @Override
     public int getItemCount() {

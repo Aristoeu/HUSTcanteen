@@ -20,6 +20,7 @@ public class LocationData {
             "湖北省武汉市洪山区关山街道剑桥春天社区东北方向","湖北省武汉市洪山区关山街道关山口社区东北方向","华中科技大学(东校区) 约87米"};
     public static List<String> halls = new ArrayList<>();
     public static List<Bitmap> picitures = new ArrayList<>();
+    public static List<Integer> photos = new ArrayList<>();
     public static List<Hall> HallList = new ArrayList<>();
     public static List<Hall> ChosenHallList = new ArrayList<>();
 

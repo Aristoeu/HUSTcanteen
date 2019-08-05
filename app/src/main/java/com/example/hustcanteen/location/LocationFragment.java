@@ -1,5 +1,6 @@
 package com.example.hustcanteen.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.example.hustcanteen.TimeActivity;
 import com.example.hustcanteen.fragment.BaseFragment;
 import com.example.hustcanteen.location.DinningHallAdapter;
 import com.example.hustcanteen.R;
@@ -46,6 +48,7 @@ public class LocationFragment extends BaseFragment implements LocationModel, Loc
     private ListView listView;
     public static Boolean isFirstLocate = true;
     private EditText editText;
+    private ImageView times;
     private DinningHallAdapter adapterTotal;
     @Override
     public View initView() {
@@ -54,6 +57,7 @@ public class LocationFragment extends BaseFragment implements LocationModel, Loc
         Spinner spinner = view.findViewById(R.id.spinner);
         listView = view.findViewById(R.id.listview);
         editText = view.findViewById(R.id.edit_text);
+        times = view.findViewById(R.id.times);
         ImageView search = view.findViewById(R.id.search);
         ImageView down = view.findViewById(R.id.down);
         adapterTotal = new DinningHallAdapter(LocationData.HallList,getContext());
@@ -90,6 +94,12 @@ public class LocationFragment extends BaseFragment implements LocationModel, Loc
             @Override
             public void onClick(View view) {
                 listView.setVisibility(View.INVISIBLE);
+            }
+        });
+        times.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), TimeActivity.class));
             }
         });
         return view;

@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.example.hustcanteen.R;
 import com.example.hustcanteen.adapter.PagerSlideAdapter;
 import com.example.hustcanteen.fragment.BaseFragment;
+import static com.example.hustcanteen.DetailData.*;
+import static com.example.hustcanteen.TryNew.SelectData.SelectedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
     @BindView(R.id.back) ImageView back;
     @BindView(R.id.main_tab_line) ImageView tab_line;
     @BindView(R.id.main_pager) ViewPager mViewPager;
+    @BindView(R.id.tv_choice) TextView tv_choice;
     private int screenWidth;
     private List<BaseFragment> mFragmentList = new ArrayList<>();
     private PagerSlideAdapter adapter;
@@ -43,7 +46,14 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
         ButterKnife.bind(this);
-
+        if (Choice == RECOMENDATION){
+            CurrentDishList = SelectedList;
+            tv_choice.setText("为你推荐");
+        }
+        if (Choice == MYLIKE){
+            CurrentDishList = LikeDishList;
+            tv_choice.setText("我的收藏");
+        }
         initData();
         initWidth();
         setListener();

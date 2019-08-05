@@ -3,7 +3,8 @@ package com.example.hustcanteen;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.graphics.BitmapFactory;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -16,24 +17,14 @@ import com.example.hustcanteen.adapter.PagerSlideAdapter;
 import com.example.hustcanteen.fragment.BaseFragment;
 import com.example.hustcanteen.fragment.FragmentFind;
 import com.example.hustcanteen.location.LocationFragment;
-import com.example.hustcanteen.fragment.FragmentMine;
-import com.example.hustcanteen.utils.Dish;
-import com.example.hustcanteen.utils.Hall;
+import com.example.hustcanteen.settings.FragmentMine;
+import static com.example.hustcanteen.DetailData.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.example.hustcanteen.location.LocationData.HallList;
-import static com.example.hustcanteen.location.LocationData.hallName;
-import static com.example.hustcanteen.location.LocationData.halls;
-import static com.example.hustcanteen.location.LocationData.locationString;
-import static com.example.hustcanteen.location.LocationData.locationX;
-import static com.example.hustcanteen.location.LocationData.locationY;
-import static com.example.hustcanteen.location.LocationData.picitures;
-import static com.example.hustcanteen.recommendation.RecommendationData.DishList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -59,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initData();
         initWidth();
         setListener();
-
+        startActivity(new Intent(this,EnterActivity.class));
     }
 
 
     private void initData() {
-        for (int i = 0;i<locationString.length;i++)
+     /*   for (int i = 0;i<locationString.length;i++)
         halls.add(locationString[i]);
         picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall0));
         picitures.add(BitmapFactory.decodeResource(getResources(), R.drawable.hall1));
@@ -81,14 +72,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             hall.picture = picitures.get(i);
             hall.index = i;
             HallList.add(hall);
-            Dish dish = new Dish();
-            dish.score = i%5;
-            dish.hall = hallName[i];
-            dish.picture = picitures.get(i);
-            dish.name = hallName[i+1];
-            DishList.add(dish);
+          //  Dish dish = new Dish();
+          //  dish.score = i%5;
+          //  dish.hall = hallName[i];
+          //  dish.picture = picitures.get(i);
+          //  dish.name = hallName[i+1];
+          //  DishList.add(dish);
         }
-
+        ReadDishes readDishes = new ReadDishes();
+        readDishes.ReadText(R.raw.datas,MainActivity.this);*/
         //temporary
         mFragmentList.add(new FragmentFind());
         mFragmentList.add(new LocationFragment());
@@ -173,5 +165,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mViewPager.setCurrentItem(2);
                 break;
         }
+    }
+    @Override
+    public void onDestroy() {
+        SharedPreferences.Editor editor = getSharedPreferences("likes",MODE_PRIVATE).edit();
+        editor.putInt("number",LikeDishList.size());
+        for (int i = 0;i<LikeDishList.size();i++){
+            editor.putInt("int"+i,LikeDishList.get(i).index);
+        }
+        editor.commit();
+        super.onDestroy();
     }
 }

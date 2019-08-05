@@ -3,7 +3,8 @@
     android:orientation="vertical" 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="20dp"
+    android:id="@+id/big_layout">
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -27,12 +28,14 @@
             android:text="大盘鸡"
             android:id="@+id/title"
             android:textColor="#000"/>
-        <TextView
+        <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="★★★★★"
-            android:id="@+id/score"/>
+            style="?android:attr/ratingBarStyleSmall"
+            android:id="@+id/scores"
+            android:progressTint="#E79834"
+            android:secondaryProgressTint="#E79834"
+            android:layout_gravity="center_horizontal"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -27,10 +27,12 @@
                 android:gravity="right"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/fcts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,10 +48,12 @@
                 android:layout_marginTop="15sp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/mianshi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,10 +77,12 @@
                 android:gravity="right"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/huncaii"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,10 +98,12 @@
                 android:layout_marginTop="15sp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/sucaii"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,10 +127,12 @@
                 android:gravity="right"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/gaodian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,10 +148,12 @@
                 android:layout_marginTop="15sp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1">
+
                 <CheckBox
+                    android:id="@+id/huicaii"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox"/>
+                    android:button="@drawable/checkbox" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,15 +165,17 @@
             </RelativeLayout>
 
         </LinearLayout>
+
         <TextView
+            android:id="@+id/next_certain_4"
             android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30sp"
             android:background="@drawable/trynew_certain"
+            android:gravity="center"
             android:text="确定"
-            android:textSize="17sp"
-            android:gravity="center"/>
+            android:textSize="17sp" />
     </LinearLayout>
 
 </LinearLayout>
