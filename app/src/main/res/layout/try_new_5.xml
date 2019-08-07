@@ -12,7 +12,8 @@
             android:layout_height="wrap_content"
             android:text="你的消费打算？"
             android:textColor="#000"
-            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:gravity="center"
             android:layout_marginTop="20sp"/>
         <LinearLayout
@@ -37,9 +38,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="＜10元"
-                    android:textSize="17sp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="25dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="27dp"
                     android:gravity="center" />
             </RelativeLayout>
             <RelativeLayout
@@ -58,9 +59,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10~20元"
-                    android:textSize="17sp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="17dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_gravity="center_vertical" />
             </RelativeLayout>
 
@@ -87,9 +88,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="21~30元"
-                    android:textSize="17sp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="17dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center" />
             </RelativeLayout>
             <RelativeLayout
@@ -108,9 +109,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="＞30元"
-                    android:textSize="17sp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="25dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_gravity="center_vertical" />
             </RelativeLayout>
 
@@ -125,6 +126,7 @@
             android:background="@drawable/trynew_certain"
             android:gravity="center"
             android:text="确定"
+            android:textStyle="bold"
             android:textSize="17sp" />
     </LinearLayout>
     <ProgressBar

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailActivity">
+    tools:context=".detail.DetailActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.example.hustcanteen.utils.RoundImageView
+        <com.example.hustcanteen.detail.RoundImageView
             android:layout_marginTop="50sp"
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="菜品详情"
             android:textColor="#111"
-            android:textSize="24sp" />
+            android:textSize="17sp" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:layout_marginTop="10dp"
         android:text="辣椒炒肉"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textSize="17sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             android:background="@drawable/textview"
             android:text="荤菜"
             android:textColor="#E79834"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/detail_taste1"
@@ -76,7 +76,7 @@
             android:background="@drawable/textview"
             android:text="重口"
             android:textColor="#E79834"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/detail_taste2"
@@ -86,7 +86,7 @@
             android:background="@drawable/textview"
             android:text="重油"
             android:textColor="#E79834"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
 
     </LinearLayout>
     <LinearLayout
@@ -122,7 +122,7 @@
         android:layout_marginTop="10dp"
         android:text="价格：8元"
         android:textColor="#333333"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/detail_hall"
@@ -132,5 +132,5 @@
         android:layout_marginTop="10dp"
         android:text="地址：韵苑食堂"
         android:textColor="#333333"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 </LinearLayout>

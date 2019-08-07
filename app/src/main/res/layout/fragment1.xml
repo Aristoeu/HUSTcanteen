@@ -32,14 +32,17 @@
 
     </Spinner>
 </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
+            android:gravity="center"
+            android:text="发现"
             android:textColor="#111"
-            android:text="发现"/>
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:typeface="normal" />
     </RelativeLayout>
 
 
@@ -55,14 +58,16 @@
                     android:layout_marginTop="10dp"
                     android:src="@drawable/path2"
                     android:layout_gravity="center_horizontal"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="吃腻了那几道菜？吃腻了那几个食堂？\n试试尝鲜模式吧！"
-                    android:textSize="15dp"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal"/>
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="吃腻了那几道菜？吃腻了那几个食堂？\n试试尝鲜模式吧！"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/try_new"
@@ -71,6 +76,7 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/btn"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="开始尝鲜"
                     android:textSize="13dp" />
             </LinearLayout>
@@ -93,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="为你推荐"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 android:textColor="#000"
                 android:layout_margin="10dp"/>
             <androidx.cardview.widget.CardView
@@ -107,45 +113,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-<androidx.viewpager.widget.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="170dp"
-    android:id="@+id/viewpager1">
-</androidx.viewpager.widget.ViewPager>
-
-                <LinearLayout
-                    android:id="@+id/llt_page_indicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:visibility="visible"
-                    android:background="#fff">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="5dp"
-                        android:id="@+id/image1"
-                        android:src="@drawable/circle_main" />
+                        android:id="@+id/rv_1">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/image2"
-                        android:padding="5dp"
-                        android:src="@drawable/circle_unchecked" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/image3"
-                        android:padding="5dp"
-                        android:src="@drawable/circle_unchecked" />
+                    </androidx.recyclerview.widget.RecyclerView>
 
-                </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -159,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="热门菜单"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 android:textColor="#000"
                 android:layout_margin="10dp"/>
             <androidx.cardview.widget.CardView
@@ -173,45 +148,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <androidx.viewpager.widget.ViewPager
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:id="@+id/viewpager2">
-                    </androidx.viewpager.widget.ViewPager>
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rv_2">
 
-                    <LinearLayout
-                        android:id="@+id/llt_page_indicator2"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal"
-                        android:visibility="visible"
-                        android:background="#fff">
+                    </androidx.recyclerview.widget.RecyclerView>
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:padding="5dp"
-                            android:id="@+id/image4"
-                            android:src="@drawable/circle_main" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:id="@+id/image5"
-                            android:padding="5dp"
-                            android:src="@drawable/circle_unchecked" />
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:id="@+id/image6"
-                            android:padding="5dp"
-                            android:src="@drawable/circle_unchecked" />
-
-                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

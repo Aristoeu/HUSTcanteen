@@ -8,15 +8,15 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hustcanteen.R;
-import com.example.hustcanteen.adapter.PagerSlideAdapter;
-import com.example.hustcanteen.fragment.BaseFragment;
-import static com.example.hustcanteen.DetailData.*;
-import static com.example.hustcanteen.TryNew.SelectData.SelectedList;
+import com.example.hustcanteen.base.PagerSlideAdapter;
+import com.example.hustcanteen.base.BaseFragment;
+import com.example.hustcanteen.model.Repos;
+
+import static com.example.hustcanteen.model.Repos.SelectedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecommendationActivity extends AppCompatActivity implements View.OnClickListener{
+public class RecommendationActivity extends AppCompatActivity implements View.OnClickListener,RecommendationView{
     @BindView(R.id.page_0) TextView text0;
     @BindView(R.id.page_1) TextView text1;
     @BindView(R.id.page_2) TextView text2;
@@ -46,28 +46,29 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
         ButterKnife.bind(this);
-        if (Choice == RECOMENDATION){
-            CurrentDishList = SelectedList;
+        if (Repos.Choice == Repos.RECOMENDATION){
+            Repos.CurrentDishList = SelectedList;
             tv_choice.setText("为你推荐");
         }
-        if (Choice == MYLIKE){
-            CurrentDishList = LikeDishList;
+        if (Repos.Choice == Repos.MYLIKE){
+            Repos.CurrentDishList = Repos.LikeDishList;
             tv_choice.setText("我的收藏");
         }
-        initData();
+        initFragmentList();
         initWidth();
         setListener();
 
     }
-    private void initData() {
-        mFragmentList.add(new Fragment1());
-        mFragmentList.add(new Fragment2());
-        mFragmentList.add(new Fragment3());
-        mFragmentList.add(new Fragment4());
-        mFragmentList.add(new Fragment5());
-        mFragmentList.add(new Fragment6());
-        mFragmentList.add(new Fragment7());
-        mFragmentList.add(new Fragment8());
+    @Override
+    public void initFragmentList() {
+        mFragmentList.add(new FragmentAllDish());
+        mFragmentList.add(new FragmentMeat());
+        mFragmentList.add(new FragmentVegetables());
+        mFragmentList.add(new FragmentDinner());
+        mFragmentList.add(new FragmentMuslin());
+        mFragmentList.add(new FragmentSet());
+        mFragmentList.add(new FragmentCakes());
+        mFragmentList.add(new FragmentSoup());
         adapter = new PagerSlideAdapter(getSupportFragmentManager(), mFragmentList);
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(0);
@@ -79,7 +80,8 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
             }
         });
     }
-    private void setListener() {
+    @Override
+    public void setListener() {
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -134,7 +136,8 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
         text6.setOnClickListener(this);
         text7.setOnClickListener(this);
     }
-    private void resetTextView() {
+    @Override
+    public void resetTextView() {
         text0.setTextColor(Color.BLACK);
         text1.setTextColor(Color.BLACK);
         text2.setTextColor(Color.BLACK);
@@ -144,8 +147,8 @@ public class RecommendationActivity extends AppCompatActivity implements View.On
         text6.setTextColor(Color.BLACK);
         text7.setTextColor(Color.BLACK);
     }
-
-    private void initWidth() {
+    @Override
+    public void initWidth() {
         DisplayMetrics dpMetrics = new DisplayMetrics();
         getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);
         screenWidth = dpMetrics.widthPixels;

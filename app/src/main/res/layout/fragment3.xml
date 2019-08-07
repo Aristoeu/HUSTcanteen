@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <com.example.hustcanteen.CircleImageView
+    <com.example.hustcanteen.settings.CircleImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/food_shaozimian"

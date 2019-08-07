@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#111"
             android:text="附近"/>
 
@@ -97,9 +97,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:id="@+id/edit_text"
                 android:hint="在这里搜索食堂名称"
+                android:textSize="13dp"
                 android:background="@null"/>
         </LinearLayout>
     </RelativeLayout>

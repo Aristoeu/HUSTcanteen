@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name=".location.DemoApplication"
+        android:name=".main.DemoApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -18,19 +18,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TimeActivity"></activity>
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".EnterActivity" />
-        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".others.TimeActivity"></activity>
+        <activity android:name=".detail.DetailActivity" />
+        <activity android:name=".enter.EnterActivity"
+            android:theme="@style/LaunchTheme">
+        <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".others.LoginActivity" />
         <activity android:name=".recommendation.RecommendationActivity" />
         <activity android:name=".settings.SettingActivity" />
-        <activity android:name=".TryNew.TryNewActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".select.SelectActivity" />
+        <activity android:name=".main.MainActivity">
         </activity>
 
         <meta-data

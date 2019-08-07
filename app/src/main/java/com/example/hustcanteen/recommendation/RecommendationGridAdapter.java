@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hustcanteen.DetailActivity;
+import com.example.hustcanteen.detail.DetailActivity;
 import com.example.hustcanteen.R;
-import com.example.hustcanteen.utils.Dish;
-import static com.example.hustcanteen.DetailData.dishDetail;
+import com.example.hustcanteen.model.Dish;
+import static com.example.hustcanteen.model.Repos.dishDetail;
 
 import java.util.List;
 
@@ -65,10 +65,5 @@ public class RecommendationGridAdapter extends RecyclerView.Adapter<Recommendati
     public int getItemCount() {
         return list.size();
     }
-    public void refresh(List<Dish> newList) {
-        //刷新数据
-        list.removeAll(list);
-        list.addAll(newList);
-        notifyDataSetChanged();
-    }
+
 }

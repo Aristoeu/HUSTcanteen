@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hustcanteen.R;
-import com.example.hustcanteen.utils.Hall;
+import com.example.hustcanteen.model.Hall;
 
 import java.util.List;
 

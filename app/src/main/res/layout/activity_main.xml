@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.hustcanteen.MainActivity">
+    tools:context="com.example.hustcanteen.main.MainActivity">
 
 
 
@@ -41,8 +41,8 @@
             android:id="@+id/ll1"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
                 android:id="@+id/image1"
                 android:src="@drawable/fragment1on"/>
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="发现"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
@@ -63,8 +63,8 @@
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
                 android:id="@+id/image2"
                 android:src="@drawable/fragment2off"/>
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="附近"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
@@ -85,16 +85,16 @@
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="23dp"
+                android:layout_width="21dp"
                 android:id="@+id/image3"
-                android:layout_height="23dp"
+                android:layout_height="21dp"
                 android:src="@drawable/fragment3off"/>
             <TextView
                 android:id="@+id/page_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我的"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
